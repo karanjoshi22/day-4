@@ -16,41 +16,59 @@
 
 // call back hell
 
-function profileLekarAao(username, cb) {
-    console.log("Fetching Profile data...");
+// function profileLekarAao(username, cb) {
+//     console.log("Fetching Profile data...");
 
-    setTimeout(() => {
-        console.log(`profile fetched of ${username}`);
-        cb({ _id: 121222, username, age: 26, email: "hey@hey.com" })
-    }, 2000)
-}
+//     setTimeout(() => {
+//         console.log(`profile fetched of ${username}`);
+//         cb({ _id: 121222, username, age: 26, email: "hey@hey.com" })
+//     }, 2000)
+// }
 
-function saarePostLekarAao(id, cb) {
-    console.log("Fetching all posts...");
+// function saarePostLekarAao(id, cb) {
+//     console.log("Fetching all posts...");
 
-    setTimeout(() => {
-        cb({ _id: id, posts: ["hey", "hello", "good-morning"] })
-    })
-}
+//     setTimeout(() => {
+//         cb({ _id: id, posts: ["hey", "hello", "good-morning"] })
+//     })
+// }
 
-function SavedPostsNikaalo(id, cb) {
-    console.log("fetching saved posts...");
+// function SavedPostsNikaalo(id, cb) {
+//     console.log("fetching saved posts...");
 
-    setTimeout(() => {
-        cb({ _id: id, saved: [1, 2, 3, 45, 4, 323] })
-    }, 3000)
-}
+//     setTimeout(() => {
+//         cb({ _id: id, saved: [1, 2, 3, 45, 4, 323] })
+//     }, 3000)
+// }
 
-profileLekarAao("harsh", function (data) {
-    console.log(data); 
-    saarePostLekarAao(data._id, function (posts) {
-        console.log(posts);
-        SavedPostsNikaalo(data._id, function (saved) {
-            console.log(saved);
+// profileLekarAao("harsh", function (data) {
+//     console.log(data); 
+//     saarePostLekarAao(data._id, function (posts) {
+//         console.log(posts);
+//         SavedPostsNikaalo(data._id, function (saved) {
+//             console.log(saved);
 
-        })
-    });
-})
+//         })
+//     });
+// })
 
 // promises
-// 
+// aap ek promises banaate ho jo ki do states mein se ek state me jaa sakta hai and wo yaa to resolve hoga ya to reject hoga ab wo kya hoga yee waqt bataayega par humein dono ke liye code likhna padta hai
+
+
+let pr = new Promise(function (res, rej) {
+    setTimeout(() => {
+        let rn = Math.floor(Math.random() * 10);
+        if (rn > 5) res("resolved with " + rn);
+        else rej("rejected with " + rn);
+    }, 3000);
+})
+
+pr
+.then(function(val){
+ console.log(val);
+})
+.catch(function(val){
+    console.log(val);    
+})
+
