@@ -56,6 +56,24 @@
 // aap ek promises banaate ho jo ki do states mein se ek state me jaa sakta hai and wo yaa to resolve hoga ya to reject hoga ab wo kya hoga yee waqt bataayega par humein dono ke liye code likhna padta hai
 
 
+// let pr = new Promise(function (res, rej) {
+//     setTimeout(() => {
+//         let rn = Math.floor(Math.random() * 10);
+//         if (rn > 5) res("resolved with " + rn);
+//         else rej("rejected with " + rn);
+//     }, 3000);
+// })
+
+// pr
+// .then(function(val){
+//  console.log(val);
+// })
+// .catch(function(val){
+//     console.log(val);    
+// })
+
+//  async /await syntax, error handling with try-catch
+
 let pr = new Promise(function (res, rej) {
     setTimeout(() => {
         let rn = Math.floor(Math.random() * 10);
@@ -64,11 +82,14 @@ let pr = new Promise(function (res, rej) {
     }, 3000);
 })
 
-pr
-.then(function(val){
- console.log(val);
-})
-.catch(function(val){
-    console.log(val);    
-})
+async function abcd(){
+    try{
+    let val = await pr;
+    console.log(val);
+    }catch (err){
+        console.log(err);
+        
+    }
+}
 
+abcd()
